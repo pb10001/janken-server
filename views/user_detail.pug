@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1 プロフィール
+  include menu
+  h2= user.user_name
+  p 登録時間: #{user.signup_date}
+  p 勝ち: #{user.wins}
+  p 負け: #{user.losses}
+  p 引き分け: #{user.draws}
+  div
+    h3 対戦履歴
+    each match in matches
+      p あなた: #{match.player_hand} ロボット: #{match.robot_hand} #{match.date}

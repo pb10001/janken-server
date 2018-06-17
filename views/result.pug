@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1 結果
+  include menu
+  p あなた: #{result.player_hand}
+  p ロボット: #{result.robot_hand}
+  if result.result == 0
+    p あなたの勝ち！
+  if result.result == 1
+    p あなたの負け！
+  if result.result == 2
+    p あいこ！

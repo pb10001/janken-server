@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  div
+    h1 じゃんけん
+    include menu
+    p #{user} の勝負!
+    form(action="match/result" method="post")
+      select(class="form-control" name="hand")
+        option(selected="selected" value="stone") グー
+        option(value="scissors") チョキ
+        option(value="paper") パー
+      input(class="btn btn-default" type="submit" value="勝負！")
