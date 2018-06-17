@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
       },
       function(err, roster){
         if(err) res.send(err);
-        else res.render('users', {roster: roster});
+        else res.render('users', {title: 'ユーザー一覧', roster: roster});
       }
     );
   });

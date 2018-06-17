@@ -4,7 +4,7 @@ var moment = require('moment');
 var db = require('../redis_client');
 
 router.get('/', function(req, res) {
-  res.render('match', {user: req.user|| 'Guest' });
+  res.render('match', {title: 'じゃんけん', user: req.user|| 'Guest' });
 });
 router.post('/result', function(req, res) {
   var max = -1;
@@ -53,7 +53,7 @@ router.post('/result', function(req, res) {
       if(result == 1) usr.losses++;
       db.hset('User', req.user, JSON.stringify(usr));
     });
-    res.render('result', {result: data});
+    res.render('result', {title: 'じゃんけん', result: data});
   });
 });
 module.exports = router;

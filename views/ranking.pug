@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  h1 ランキング
+  include menu
+  for user, index in list
+    p #{index + 1}位 #{user.user_name}(#{user.rate}%)

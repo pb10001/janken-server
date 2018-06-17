@@ -1,3 +1,5 @@
+'use strict';
+
 var createError = require('http-errors');
 var express = require('express');
 var session = require('express-session');
@@ -6,11 +8,15 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var sassMiddleware = require('node-sass-middleware');
 var bodyParser = require('body-parser');
+
+// routes
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
 var signupRouter = require('./routes/signup');
 var matchRouter = require('./routes/match');
+var rankingRouter = require('./routes/ranking');
+
 var passport = require('./passport');
 var app = express();
 
@@ -48,6 +54,7 @@ app.use('/users', usersRouter);
 app.use('/login', loginRouter);
 app.use('/signup', signupRouter);
 app.use('/match', isAuthenticated, matchRouter);
+app.use('/ranking', isAuthenticated, rankingRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
