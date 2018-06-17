@@ -1,2 +1,7 @@
 nav(class="navbar navbar-default")
   a(class="navbar-brand" href="/") じゃんけんコロシアム
+  ul(class="nav navbar-nav navbar-right")
+    if user === 'Guest'
+      li: a(href= "/signup") Welcome, #{user}!
+    else
+      li: a(href= "/users/" + user) Welcome, #{user}!

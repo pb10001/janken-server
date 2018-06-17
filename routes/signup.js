@@ -9,7 +9,7 @@ var moment = require('moment');
 router.get('/', function(req, res) {
   res.render("signup", {
     title: "新規登録",
-    user_name: req.user || "Guest"
+    user: req.user || "Guest"
   });
 });
 router.post('/', function(req, res) {

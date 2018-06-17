@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
       },
       function(err, roster){
         if(err) res.send(err);
-        else res.render('users', {title: 'ユーザー一覧', roster: roster});
+        else res.render('users', {title: 'ユーザー一覧', roster: roster, user: req.user||'Guest'});
       }
     );
   });
@@ -34,7 +34,7 @@ router.get('/:id', function(req, res){
               callback(null, JSON.parse(usr).player === req.params.id);
             },
             function(err, users){
-              res.render('user_detail', {user: JSON.parse(doc), matches: users.map(x=>JSON.parse(x))});
+              res.render('user_detail', {user: req.user||'Guest',user_obj: JSON.parse(doc), matches: users.map(x=>JSON.parse(x))});
             }
           );
         }

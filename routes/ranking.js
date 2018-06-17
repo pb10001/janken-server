@@ -16,7 +16,7 @@ router.get('/', function(req, res){
            if(a.rate > b.rate) return -1;
            else return 1;
          });
-         res.render('ranking', {title: 'ランキング', list: list});
+         res.render('ranking', {title: 'ランキング', list: list, user: req.user||'Guest'});
        }
      );
   });

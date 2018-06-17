@@ -3,5 +3,6 @@ extends layout
 block content
   h1 ランキング
   include menu
+  ul(class="list-group")
   for user, index in list
-    p #{index + 1}位 #{user.user_name}(#{user.rate}%)
+    li(class="list-group-item") #{index + 1}位 #{user.user_name}(#{user.rate}%)

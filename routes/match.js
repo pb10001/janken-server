@@ -53,7 +53,7 @@ router.post('/result', function(req, res) {
       if(result == 1) usr.losses++;
       db.hset('User', req.user, JSON.stringify(usr));
     });
-    res.render('result', {title: 'じゃんけん', result: data});
+    res.render('result', {title: 'じゃんけん', result: data, user: req.user||'Guest'});
   });
 });
 module.exports = router;
