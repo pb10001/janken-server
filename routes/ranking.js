@@ -12,7 +12,10 @@ router.get('/', function(req, res) {
         callback(null, {
           user_name: obj.user_name,
           nickname: obj.nickname,
-          point: point
+          point: point,
+          wins: obj.wins,
+          losses: obj.losses,
+          draws: obj.draws
         });
       },
       function(err, users) {
