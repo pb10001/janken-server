@@ -81,6 +81,7 @@ router.post('/edit/:id', function(req, res) {
     obj.nickname = req.body['nickname'];
     obj.description = req.body['description'];
     db.hset('User', req.params.id, JSON.stringify(obj));
+    req.session.passport.user = JSON.stringify({user_name: obj.user_name, nickname: obj.nickname, description: obj.description});
     res.redirect('/users/' + req.params.id);
   });
 });

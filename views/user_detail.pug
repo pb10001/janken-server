@@ -14,11 +14,11 @@ block content
       if(user_obj.user_name === user.user_name)
         a(class="btn btn-default" href="/users/edit/" + user_obj.user_name) 編集する
       span 登録日: #{user_obj.signup_date}
-  p 勝ち: #{user_obj.wins}
-  p 負け: #{user_obj.losses}
-  p 引き分け: #{user_obj.draws}
   div
     h3 対戦履歴
+    p 勝ち: #{user_obj.wins}
+    p 負け: #{user_obj.losses}
+    p 引き分け: #{user_obj.draws}
     ul(class="list-group")
       each match in matches
         li(class="list-group-item") #{user_obj.nickname}: #{match.player_hand_str} ロボット: #{match.robot_hand_str} #{match.date}
