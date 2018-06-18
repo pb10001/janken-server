@@ -10,6 +10,7 @@ passport.use(
         return done(null, false);
       }
       if (doc) {
+        //ハッシュ値を計算して照合
         var shasum = crypto.createHash('sha1');
         shasum.update(password);
         var hash = shasum.digest('hex');
