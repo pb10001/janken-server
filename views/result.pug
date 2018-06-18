@@ -3,8 +3,8 @@ extends layout
 block content
   h1 結果
   include menu
-  p あなた: #{result.player_hand}
-  p ロボット: #{result.robot_hand}
+  p あなた: #{result.player_hand_str}
+  p ロボット: #{result.robot_hand_str}
   if result.result == 0
     p あなたの勝ち！
   if result.result == 1

@@ -12,4 +12,4 @@ block content
     h3 対戦履歴
     ul(class="list-group")
       each match in matches
-        li(class="list-group-item") あなた: #{match.player_hand} ロボット: #{match.robot_hand} #{match.date}
+        li(class="list-group-item") あなた: #{match.player_hand_str} ロボット: #{match.robot_hand_str} #{match.date}

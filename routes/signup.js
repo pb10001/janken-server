@@ -1,18 +1,18 @@
-'use strict';
+"use strict";
 
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-var db = require('../redis_client');
-var crypto = require('crypto');
-var moment = require('moment');
+var db = require("../redis_client");
+var crypto = require("crypto");
+var moment = require("moment");
 
-router.get('/', function(req, res) {
+router.get("/", function(req, res) {
   res.render("signup", {
     title: "新規登録",
     user: req.user || "Guest"
   });
 });
-router.post('/', function(req, res) {
+router.post("/", function(req, res) {
   if (req.body["username"] === "" || req.body["password"] === "") {
     res.redirect("/signup");
     return;
@@ -26,25 +26,25 @@ router.post('/', function(req, res) {
     wins: 0,
     losses: 0,
     draws: 0,
-    signup_date: moment().zone("+09:00").format("YYYY/MM/DD HH:mm:ss")
+    signup_date: moment()
+      .utcOffset("+09:00")
+      .format("YYYY/MM/DD HH:mm:ss")
   };
   if (!data.user_name.match(/[^A-Za-z0-9]+/)) {
-    db.hget('User', data.user_name, function(err, doc){
+    db.hget("User", data.user_name, function(err, doc) {
       if (err) {
         console.log(err);
       }
-      if(doc){
+      if (doc) {
         console.log(doc);
-        res.redirect('/signup');
-      }
-      else{
-        db.hset('User', data.user_name, JSON.stringify(data));
-        res.redirect('/login');
+        res.redirect("/signup");
+      } else {
+        db.hset("User", data.user_name, JSON.stringify(data));
+        res.redirect("/login");
       }
     });
-  }
-  else{
-    res.redirect('/signup');
+  } else {
+    res.redirect("/signup");
   }
 });
 module.exports = router;

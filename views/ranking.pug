@@ -5,4 +5,4 @@ block content
   include menu
   ul(class="list-group")
   for user, index in list
-    li(class="list-group-item") #{index + 1}位 #{user.user_name}(#{user.rate}%)
+    a(class="list-group-item" href="/users/" + user.user_name) #{index + 1}位 #{user.user_name}(#{user.rate}%)
