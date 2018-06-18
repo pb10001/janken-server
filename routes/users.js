@@ -45,6 +45,7 @@ router.get('/:id', function(req, res) {
                 return obj;
               });
               res.render('user_detail', {
+                title: 'プロフィール',
                 user: req.user || 'Guest',
                 user_obj: JSON.parse(doc),
                 matches: list
@@ -54,6 +55,7 @@ router.get('/:id', function(req, res) {
         } else {
           var list = [];
           res.render('user_detail', {
+            title: 'プロフィール',
             user: req.user || 'Guest',
             user_obj: JSON.parse(doc),
             matches: list
