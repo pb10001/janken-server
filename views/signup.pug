@@ -4,9 +4,11 @@ block content
   div(class="container-fluid")
       h1(class='caption')= title
       form(class="input-group" method="post" class='mb-2')
-        p User name(required)
-        input(class='form-control mb-2' type="text" name="username" placeholder='User Name' required="requied")
-        p Password(required)
-        input(class='form-control mb-2' type='password' name="password" placeholder='Password' required="requied")
+        p ニックネーム
+        input(class="form-control mb-2" type="text" name="nickname" placeholder="Nickname" required="required")
+        p ユーザー名(英数、必須)
+        input(class='form-control mb-2' type="text" name="username" placeholder='User Name' required="required")
+        p パスワード(英数、必須)
+        input(class='form-control mb-2' type='password' name="password" placeholder='Password' required="required")
         p(class="text-danger")= flash
         input(class='btn btn-default mb-2' type="submit" value='Sign up')

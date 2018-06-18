@@ -5,4 +5,4 @@ block content
   include menu
   div(class="list-group")
     each user in roster
-      a(class="list-group-item" href="/users/" + user.user_name)= user.user_name
+      a(class="list-group-item" href="/users/" + user.user_name)= user.nickname

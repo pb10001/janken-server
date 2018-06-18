@@ -21,6 +21,7 @@ router.post('/', function(req, res) {
   shasum.update(req.body['password']);
   let hash = shasum.digest('hex');
   let data = {
+    nickname: req.body['nickname'],
     user_name: req.body['username'],
     password: hash,
     wins: 0,

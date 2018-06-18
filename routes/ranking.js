@@ -8,13 +8,22 @@ router.get('/', function(req, res) {
       docs,
       function(usr, callback) {
         var obj = JSON.parse(usr);
-        var rate =
-          Math.round((1000 * obj.wins) / (obj.wins + obj.losses + obj.draws)) /
-          10.0;
-        callback(null, { user_name: obj.user_name, rate: rate });
+        var divZero = obj.wins + obj.losses + obj.draws == 0;
+        var rate = divZero
+          ? '-'
+          : Math.round(
+              (1000 * obj.wins) / (obj.wins + obj.losses + obj.draws)
+            ) / 10.0;
+        callback(null, {
+          user_name: obj.user_name,
+          nickname: obj.nickname,
+          rate: rate
+        });
       },
       function(err, users) {
         var list = users.sort(function(a, b) {
+          if (a.rate == '-') return 1;
+          if (b.rate == '-') return -1;
           if (a.rate > b.rate) return -1;
           else return 1;
         });

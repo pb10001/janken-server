@@ -3,7 +3,9 @@ extends layout
 block content
   h1 プロフィール
   include menu
-  h2= user_obj.user_name
+  h2
+    span= user_obj.nickname
+    small= user_obj.user_name
   p 登録時間: #{user_obj.signup_date}
   p 勝ち: #{user_obj.wins}
   p 負け: #{user_obj.losses}
