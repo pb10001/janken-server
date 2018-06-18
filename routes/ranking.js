@@ -8,23 +8,16 @@ router.get('/', function(req, res) {
       docs,
       function(usr, callback) {
         var obj = JSON.parse(usr);
-        var divZero = obj.wins + obj.losses + obj.draws == 0;
-        var rate = divZero
-          ? '-'
-          : Math.round(
-              (1000 * obj.wins) / (obj.wins + obj.losses + obj.draws)
-            ) / 10.0;
+        var point = obj.wins - obj.losses; //勝ち点 勝ち: 1 あいこ: 0 負け: -1
         callback(null, {
           user_name: obj.user_name,
           nickname: obj.nickname,
-          rate: rate
+          point: point
         });
       },
       function(err, users) {
         var list = users.sort(function(a, b) {
-          if (a.rate == '-') return 1;
-          if (b.rate == '-') return -1;
-          if (a.rate > b.rate) return -1;
+          if (a.point > b.point) return -1;
           else return 1;
         });
         res.render('ranking', {
