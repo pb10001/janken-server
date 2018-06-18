@@ -67,22 +67,21 @@ router.get('/:id', function(req, res) {
     }
   });
 });
-router.get('/edit/:id', function(req, res){
+router.get('/edit/:id', function(req, res) {
   if (req.params.id === req.user) {
-    res.render('edit_profile', {title: 'プロフィール編集', user: req.user});
-  }
-  else{
+    res.render('edit_profile', { title: 'プロフィール編集', user: req.user });
+  } else {
     res.send('許可されていない操作です。');
   }
 });
-router.post('/edit/:id', function(req, res){
-    db.hget('User', req.params.id, function(err, doc){
-      if(!doc) res.send('ユーザーが存在しません。');
-      var obj = JSON.parse(doc);
-      obj.nickname = req.body['nickname'];
-      obj.description = req.body['description'];
-      db.hset('User', req.params.id, JSON.stringify(obj));
-      res.redirect('/users/' + req.params.id);
-    });
+router.post('/edit/:id', function(req, res) {
+  db.hget('User', req.params.id, function(err, doc) {
+    if (!doc) res.send('ユーザーが存在しません。');
+    var obj = JSON.parse(doc);
+    obj.nickname = req.body['nickname'];
+    obj.description = req.body['description'];
+    db.hset('User', req.params.id, JSON.stringify(obj));
+    res.redirect('/users/' + req.params.id);
+  });
 });
 module.exports = router;
