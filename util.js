@@ -12,22 +12,19 @@ exports.hand2num = hand => {
         : null;
 };
 exports.winner = (num1, num2) => {
+  var res = null;
   if (num1 == 0) {
-    if (num2 == 0) return 2;
-    else if (num2 == 1) return 0;
-    else if (num2 == 2) return 1;
-    else return null;
+    if (num2 == 0) res = 2;
+    else if (num2 == 1) res = 0;
+    else if (num2 == 2) res = 1;
   } else if (num1 == 1) {
-    if (num2 == 0) return 1;
-    else if (num2 == 1) return 2;
-    else if (num2 == 2) return 0;
-    else return null;
+    if (num2 == 0) res = 1;
+    else if (num2 == 1) res = 2;
+    else if (num2 == 2) res = 0;
   } else if (num1 == 2) {
-    if (num2 == 0) return 0;
-    else if (num2 == 1) return 1;
-    else if (num2 == 2) return 2;
-    else return null;
-  } else {
-    return null;
+    if (num2 == 0) res = 0;
+    else if (num2 == 1) res = 1;
+    else if (num2 == 2) res = 2;
   }
+  return res;
 };
