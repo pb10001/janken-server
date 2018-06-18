@@ -3,10 +3,17 @@ extends layout
 block content
   h1 プロフィール
   include menu
-  h2
-    span= user_obj.nickname
-    small= user_obj.user_name
-  p 登録時間: #{user_obj.signup_date}
+  div(class="panel panel-default")
+    div(class="panel-heading")
+      h3
+        span= user_obj.nickname
+        small= user_obj.user_name
+    div(class="panel-body multiline")
+      p #{user_obj.description}
+    div(class="panel-footer")
+      if(user_obj.user_name === user)
+        a(class="btn btn-default" href="/users/edit/" + user_obj.user_name) 編集する
+      span 登録日: #{user_obj.signup_date}
   p 勝ち: #{user_obj.wins}
   p 負け: #{user_obj.losses}
   p 引き分け: #{user_obj.draws}
