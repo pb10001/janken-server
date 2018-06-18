@@ -4,7 +4,7 @@ block content
   h1(class='caption')= title
   form(class="input-group" method="post" class='mb-2')
     p ニックネーム
-    input(class="form-control mb-2" type="text" name="nickname" placeholder="Nickname" required="required")
+    input(class="form-control mb-2" type="text" name="nickname" placeholder="Nickname" required="required" value=user.nickname)
     p 自己紹介
-    textarea(class="form-control" name="description" placeholder="Description")
+    textarea(class="form-control" name="description" placeholder="Description")= user.description
     input(class='btn btn-default mb-2' type="submit" value='変更')

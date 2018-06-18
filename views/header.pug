@@ -4,4 +4,4 @@ nav(class="navbar navbar-default")
     if user === 'Guest'
       li: a(href= "/login") Welcome,#{user}!
     else
-      li: a(href= "/users/" + user) Welcome, #{user}!
+      li: a(href= "/users/" + user.user_name) Welcome, #{user.nickname}!

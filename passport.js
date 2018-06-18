@@ -15,7 +15,7 @@ passport.use(
         var hash = shasum.digest('hex');
         var obj = JSON.parse(doc);
         if (obj.password == hash) {
-          return done(null, username);
+          return done(null, {user_name: username, nickname: obj.nickname, description: obj.description});
         } else {
           return done(null, false);
         }
@@ -27,9 +27,9 @@ passport.use(
 );
 
 passport.serializeUser(function(user, done) {
-  done(null, user);
+  done(null, JSON.stringify(user));
 });
 passport.deserializeUser(function(user, done) {
-  done(null, user);
+  done(null, JSON.parse(user));
 });
 module.exports = passport;

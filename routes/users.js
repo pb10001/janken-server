@@ -68,7 +68,7 @@ router.get('/:id', function(req, res) {
   });
 });
 router.get('/edit/:id', function(req, res) {
-  if (req.params.id === req.user) {
+  if (req.params.id === req.user.user_name) {
     res.render('edit_profile', { title: 'プロフィール編集', user: req.user });
   } else {
     res.send('許可されていない操作です。');
