@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 exports.num2hand = num => {
-  return num == 0 ? "グー" : num == 1 ? "チョキ" : num == 2 ? "パー" : null;
+  return num == 0 ? 'グー' : num == 1 ? 'チョキ' : num == 2 ? 'パー' : null;
 };
 exports.hand2num = hand => {
-  return hand === "stone"
+  return hand === 'stone'
     ? 0
-    : hand === "scissors"
+    : hand === 'scissors'
       ? 1
-      : hand === "paper"
+      : hand === 'paper'
         ? 2
         : null;
 };

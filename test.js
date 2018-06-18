@@ -1,29 +1,29 @@
-"use strict";
-let assert = require("assert");
-let util = require("./util");
+'use strict';
+let assert = require('assert');
+let util = require('./util');
 
 //utilモジュールのテスト
-describe("util", () => {
-  describe("num2hand", () => {
-    it("0: stone, 1: scissors, 2: paper, others: null", () => {
-      assert.equal(util.num2hand(0), "グー");
-      assert.equal(util.num2hand(1), "チョキ");
-      assert.equal(util.num2hand(2), "パー");
+describe('util', () => {
+  describe('num2hand', () => {
+    it('0: stone, 1: scissors, 2: paper, others: null', () => {
+      assert.equal(util.num2hand(0), 'グー');
+      assert.equal(util.num2hand(1), 'チョキ');
+      assert.equal(util.num2hand(2), 'パー');
       assert.equal(util.num2hand(3), null);
-      assert.equal(util.num2hand("test"), null);
+      assert.equal(util.num2hand('test'), null);
     });
   });
-  describe("hand2num", () => {
-    it("stone: 0, scissors: 1, paper: 2, others: null", () => {
-      assert.equal(util.hand2num("stone"), 0);
-      assert.equal(util.hand2num("scissors"), 1);
-      assert.equal(util.hand2num("paper"), 2);
-      assert.equal(util.hand2num("stona"), null);
+  describe('hand2num', () => {
+    it('stone: 0, scissors: 1, paper: 2, others: null', () => {
+      assert.equal(util.hand2num('stone'), 0);
+      assert.equal(util.hand2num('scissors'), 1);
+      assert.equal(util.hand2num('paper'), 2);
+      assert.equal(util.hand2num('stona'), null);
       assert.equal(util.hand2num(0), null);
     });
   });
-  describe("winner", () => {
-    it("勝者が表示される", () => {
+  describe('winner', () => {
+    it('勝者が表示される', () => {
       assert.equal(util.winner(0, 0), 2);
       assert.equal(util.winner(0, 1), 0);
       assert.equal(util.winner(0, 2), 1);
