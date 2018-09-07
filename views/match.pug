@@ -5,6 +5,8 @@ block content
     h1 じゃんけん
     include menu
     p #{user.user_name} 対 ロボット の勝負!
+    font(color="red")
+      small 一日の対戦数は最大10回です。
     form(action="match/result" method="post")
       select(class="form-control" name="hand")
         option(selected="selected" value="stone") グー
