@@ -10,11 +10,19 @@ router.get('/', function(req, res) {
 router.post('/result', function(req, res) {
   var max = -1;
   db.hgetall('Match', function(err, docs) {
+    var count = 0;
     for (var key in docs) {
       var obj = JSON.parse(docs[key]);
+      var offset = (moment().utcOffset("+9:00") - moment(obj.date))/1000/60/60/24;
+      console.log(offset);
+      if(obj.player===req.user.user_name && offset < 1.0) count++;
       if (obj.id > max) {
         max = obj.id;
       }
+    }
+    if(count >= 10){
+      res.send("1日の対戦数を超えました。");
+      return;
     }
     var playerHand = util.hand2num(req.body['hand']);
     var robotHand = Math.floor(Math.random() * 3);
